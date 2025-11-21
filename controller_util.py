@@ -266,12 +266,12 @@ class ControllerStateMachine():
 			self.logger.info(f'Reference value is set to {self.controller.setpoint}V and accepted control error is {self.controller.accepted_control_error}V\n')
 			
 			self.logger.info(f'For system limits a ramp input will be executed during initialization!')
-			user_input = input(f'Enter "full" for full range or "save" for save mode (ramp stops at ref. value {self.controller.setpoint}V): ')
+			user_input = input(f'Enter "full" for full range or "safe" for safe mode (ramp stops at ref. value {self.controller.setpoint}V): ')
 			if user_input == 'full':
 				self.logger.info(f'System limits will be determined in full range mode!\n')
 				self.controller.find_system_limits_in_savemode = False
 			else:
-				self.logger.info(f'System limits will be determined in save mode (stops at reference value {self.controller.setpoint}V)!\n')
+				self.logger.info(f'System limits will be determined in safe mode (stops at reference value {self.controller.setpoint}V)!\n')
 				self.controller.find_system_limits_in_savemode = True
 			
 			user_input = input('Hit enter to continue or "live" to create a live plot window for control scope: ')
